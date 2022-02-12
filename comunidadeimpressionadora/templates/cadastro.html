@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="texto container" xmlns="http://www.w3.org/1999/html">
+    <br>
+    <hr>
+
+     <div class="col">
+             <form method="POST" action="" class="border p-5 m-3">
+                 {{ form_cadastro.csrf_token }}
+                 <legend> CADASTRE-SE</legend>
+                    <fieldset>
+                <div class="form-group">
+                        {{ form_cadastro.username.label(class="form-control-label") }}
+                            {%if form_cadastro.username.errors%}
+                            {{ form_cadastro.username(class="form-control-sm is-invalid mt-4 col-lg-3 col-lg-offset-3", placeholder="Usuário...") }}
+                        <div class="invalid-feedback">
+                                {%for erro in form_cadastro.username.errors%}
+                                    {{erro}}
+                                {%endfor%}
+                        </div>
+                            {%else%}
+                                {{ form_cadastro.username(class="form-control-sm mt-4 col-lg-3 col-lg-offset-3", placeholder="Usuário...") }}
+                        {%endif%}
+
+                        </div>
+
+                        <div class="form-group">
+                        {{ form_cadastro.email.label(class="form-control-label")  }}
+                            {%if form_cadastro.email.errors%}
+                            {{ form_cadastro.email(class="form-control-sm is-invalid mt-4 col-lg-3 col-lg-offset-3", placeholder="E-mail...") }}
+                        <div class="invalid-feedback">
+                                {%for erro in form_cadastro.email.errors%}
+                                    {{erro}}
+                                {%endfor%}
+                        </div>
+                            {%else%}
+                                {{ form_cadastro.email(class="form-control-sm mt-4 col-lg-3 col-lg-offset-3", placeholder="E-mail...") }}
+                        {%endif%}
+                        </div>
+
+                        <div class="form-group">
+                        {{ form_cadastro.senha.label(class="form-control-label") }}
+                            {%if form_cadastro.senha.errors%}
+                            {{ form_cadastro.senha(class="form-control-sm is-invalid mt-4 col-lg-3 col-lg-offset-3", placeholder="Senha...") }}
+                        <div class="invalid-feedback">
+                                {%for erro in form_cadastro.senha.errors%}
+                                    {{erro}}
+                                {%endfor%}
+                        </div>
+                            {%else%}
+                                {{ form_cadastro.senha(class="form-control-sm mt-4 col-lg-3 col-lg-offset-3", placeholder="Senha...") }}
+                        {%endif%}
+
+                        </div>
+
+                        <div class="form-group">
+                        {{ form_cadastro.confirmacao_senha.label(class="form-control-label")  }}
+                            {%if form_cadastro.confirmacao_senha.errors%}
+                            {{ form_cadastro.confirmacao_senha(class="form-control-sm mt-4 col-lg-3 col-lg-offset-3", placeholder="Confirme sua senha...") }}
+                        <div class="invalid-feedback">
+                                {%for erro in form_cadastro.confirmacao_senha.errors%}
+                                    {{erro}}
+                                {%endfor%}
+                        </div>
+                            {%else%}
+                                {{ form_cadastro.confirmacao_senha(class="form-control-sm mt-4 col-lg-3 col-lg-offset-3", placeholder="Confirme sua senha...") }}
+                        {%endif%}
+                        </div>
+
+                        <br>
+                 </fieldset>
+
+
+
+                      {{ form_cadastro.botao_submit_cadastro(class="btn btn-primary m-4 p-2") }}
+
+             </form>
+        </div>
+</div>
+{% endblock %}
