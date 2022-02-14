@@ -1,9 +1,11 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from comunidadeimpressionadora.models import Usuario
 from flask_login import current_user
+
+
 
 class FormCadastro(FlaskForm):
     username = StringField('Usuário', validators=[DataRequired(25)])
@@ -28,11 +30,19 @@ class FormLogin(FlaskForm):
 
 
 class FormEditarPerfil(FlaskForm):
-    username = StringField('User:   ', validators=[DataRequired()])
-    email = StringField('E-mail: ', validators=[DataRequired(), Email()])
-    bio = StringField('Bio:   ', validators=[DataRequired()])
-    foto_perfil = FileField('Atualizar foto de perfil', validators=[FileAllowed(['jpg', 'png', 'jpeg']),'ERRO!'])
-    botao_submit_editarperfil = SubmitField('CONFIRMAR EDIÇÃO')
+    username = StringField('Nome de Usuário', validators=[DataRequired()])
+    email = StringField('E-mail', validators=[DataRequired(), Email()])
+    foto_perfil = FileField('Atualizar Foto de Perfil', validators=[FileAllowed(['jpg', 'png'])])
+
+    curso_javascrip = BooleanField('CURSO JAVASCRIPT')
+    curso_python = BooleanField('CURSO PYHTON')
+    curso_sql = BooleanField('CURSO SQL')
+    curso_powerbi = BooleanField('CURSO PB')
+    curso_html = BooleanField('CURSO HTML')
+    curso_php = BooleanField('CURSO PHP')
+
+
+    botao_submit_editarperfil = SubmitField('Confirmar Edição')
 
 
 def validate_email(self, email):
@@ -40,3 +50,10 @@ def validate_email(self, email):
         usuario = Usuario.query.filter_by(email=email.data).first()
         if usuario:
             raise ValidationError('Já existe um usuário com esse e-mail.')
+
+
+
+class FormCriarPost(FlaskForm):
+    titulo = StringField('Título do Post', validators=[DataRequired(), Length(2, 140)])
+    corpo = TextAreaField('Escreva seu Post aqui', validators=[DataRequired()])
+    botao_submit = SubmitField('Criar Post')

@@ -86,3 +86,28 @@ hr .new1 {
 .date {
     background-color: #ccc
 }
+
+    .texto{
+    text-align: center;
+    color: purple;
+
+}
+
+.btn-primary {
+    color: black !important;
+    background-color: #9E10B3 !important;
+    border-color: black !important;
+    font-weight: bold !important;
+
+}
+.text-left{
+text-align: center !important
+}
+
+form-horizontal .control-label{
+text-align: left !important
+}
+
+.posts{
+background-color: darkgray !important;
+}
