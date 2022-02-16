@@ -8,11 +8,11 @@ from flask_login import current_user
 
 
 class FormCadastro(FlaskForm):
-    username = StringField('Usuário', validators=[DataRequired(25)])
-    email = StringField('E-mail', validators=[DataRequired(), Email()])
-    senha= PasswordField('Senha', validators=[DataRequired(), Length(6, 20)])
-    confirmacao_senha = PasswordField('Confirme', validators=[DataRequired(), EqualTo('senha')])
-    botao_submit_cadastro = SubmitField('Criar Conta')
+    username = StringField('Username', validators=[DataRequired(25)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    senha= PasswordField('Password', validators=[DataRequired(), Length(6, 20)])
+    confirmacao_senha = PasswordField('Confirme Password', validators=[DataRequired(), EqualTo('senha')])
+    botao_submit_cadastro = SubmitField('Create account')
 
     #se quiser fazer o username ser único, criar outra função dessa com validade_username
     def validate_email(self, email):
@@ -23,9 +23,9 @@ class FormCadastro(FlaskForm):
 
 class FormLogin(FlaskForm):
     email = StringField('E-mail', validators=[DataRequired(), Email()])
-    senha = PasswordField('Senha', validators=[DataRequired(), Length(6, 20)])
-    lembrar_dados = BooleanField('Lembre-me')
-    botao_submit_login = SubmitField('Fazer Login')
+    senha = PasswordField('Password', validators=[DataRequired(), Length(6, 20)])
+    lembrar_dados = BooleanField('Remember-me')
+    botao_submit_login = SubmitField('Login')
 
 
 
