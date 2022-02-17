@@ -87,10 +87,9 @@ hr .new1 {
     background-color: #ccc
 }
 
-    .texto{
-    text-align: center;
-    color: purple;
-
+.texto{
+text-align: center;
+color: white;
 }
 
 .btn-primary {
@@ -125,6 +124,18 @@ body {
     background: #212042;
     color: #57557A
 }
+
+.btn-navbar{
+background: linear-gradient(135deg, rgba(176, 106, 252, 1) 39%, rgba(116, 17, 255, 1) 101%);
+color:white !important;
+font-weight:bold !important;
+}
+
+
+.botao-perigo{
+font-weight: bold !important;
+}
+
 
 p {
     font-weight: 600;
@@ -267,3 +278,6 @@ small {
     }
 }
 
+.card-text{
+font-size: 15px !important;
+}

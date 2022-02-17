@@ -1,53 +1,47 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <div class="container-fluid container">
-    <a style="color: #CC3EBD" class="navbar-brand text-center"  href="{{ url_for('home') }}">Minha <br>Comunidade</a> <!-- ou class="navbar-brand text-info"//text-primary, text-secondary, text-success, text-danger, text-warning, text-info" -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a style="color: #F5FFF7" class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Início</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: #F5FFF7" class="nav-link" href="{{ url_for('usuarios') }}">Usuários</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: #F5FFF7" class="nav-link" href="{{ url_for('contato') }}">Contato</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a style="color: #F5FFF7" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a style="color: #CC3EBD" class="dropdown-item" href="#">Action</a></li>
-            <li><a style="color: #CC3EBD" class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a style="color: #CC3EBD" class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="d-flex navbar-nav">
-        {% if current_user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{ url_for('home') }}">
+    <img src="{{url_for('static',filename='logo.png') }}" width="60" height="60" class="d-inline-block align-top" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('usuarios') }}">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('contato') }}">Developer Contact</a>
+      </li>
+    </ul>
+    <form style="list-style-type: none;" class="form-inline my-2 my-lg-0">
+    {% if current_user.is_authenticated %}
            <li class="nav-item p-3">
-        <a href="{{ url_for('criar_post') }}" class="btn btn-outline-secondary" role="button">Criar Post</a>
-          </li>
+        <a  href="{{ url_for('criar_post') }}" class="btn-navbar btn btn-outline-secondary my-2 my-sm-0" type="submit">Create Post</a>
+           </li>
+
+
           <li class="nav-item p-3">
-        <a href="{{ url_for('perfil') }}" class="btn btn-outline-secondary" role="button">Meu Perfil</a>
+        <a href="{{ url_for('perfil') }}" class="btn-navbar btn btn-outline-secondary my-2 my-sm-0" type="submit">My Profile</a>
           </li>
+
+
           <li class="nav-item p-3">
-        <a href="{{ url_for('sair') }}" class="btn btn-outline-secondary" role="button">Sair</a>
+        <a  href="{{ url_for('sair') }}" class="botao-perigo btn btn-danger my-2 my-sm-0" type="submit">Log Out</a>
           </li>
         {% else %}
           <li class="nav-item p-3">
-        <a href="{{ url_for('login') }}" class="btn btn-outline-secondary" role="button">Login</a>
+        <a href="{{ url_for('login') }}" class="btn-navbar btn btn-outline-secondary my-2 my-sm-0" type="submit">Login</a>
           </li>
 
           <li class="nav-item p-3">
-        <a href="{{ url_for('cadastro') }}" class="btn btn-outline-secondary" role="button">Criar Conta</a>
+        <a href="{{ url_for('cadastro') }}"class="btn-navbar btn btn-outline-secondary my-2 my-sm-0" type="submit" role="button">Create Account</a>
           </li>
         {% endif %}
-      </ul>
-    </div>
+    </form>
   </div>
 </nav>
