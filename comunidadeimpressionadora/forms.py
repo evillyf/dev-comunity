@@ -30,30 +30,30 @@ class FormLogin(FlaskForm):
 
 
 class FormEditarPerfil(FlaskForm):
-    username = StringField('Nome de Usuário', validators=[DataRequired()])
+    username = StringField('Username', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
-    foto_perfil = FileField('Atualizar Foto de Perfil', validators=[FileAllowed(['jpg', 'png'])])
+    foto_perfil = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png', 'jpeg'])])
 
-    curso_javascrip = BooleanField('CURSO JAVASCRIPT')
-    curso_python = BooleanField('CURSO PYHTON')
-    curso_sql = BooleanField('CURSO SQL')
-    curso_powerbi = BooleanField('CURSO PB')
-    curso_html = BooleanField('CURSO HTML')
-    curso_php = BooleanField('CURSO PHP')
+    curso_javascrip = BooleanField('JAVASCRIPT')
+    curso_python = BooleanField('PYTHON')
+    curso_sql = BooleanField('SQL')
+    curso_powerbi = BooleanField('C++')
+    curso_html = BooleanField('HTML E CSS')
+    curso_php = BooleanField('PHP')
 
 
-    botao_submit_editarperfil = SubmitField('Confirmar Edição')
+    botao_submit_editarperfil = SubmitField('Confirm edit')
 
 
 def validate_email(self, email):
     if current_user.email != email.data:
         usuario = Usuario.query.filter_by(email=email.data).first()
         if usuario:
-            raise ValidationError('Já existe um usuário com esse e-mail.')
+            raise ValidationError('An account with this email already exists.')
 
 
 
 class FormCriarPost(FlaskForm):
-    titulo = StringField('Título do Post', validators=[DataRequired(), Length(2, 140)])
-    corpo = TextAreaField('Escreva seu Post aqui', validators=[DataRequired()])
-    botao_submit = SubmitField('Criar Post')
+    titulo = StringField('Post title', validators=[DataRequired(), Length(2, 140)])
+    corpo = TextAreaField('Type your post here', validators=[DataRequired()])
+    botao_submit = SubmitField('Create Post')

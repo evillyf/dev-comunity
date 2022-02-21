@@ -5,23 +5,19 @@
 
 
 <div class="texto">
-    <h1>Usuários</h1>
+    <h1>Users</h1>
     <p></p>
     {% for usuario in lista_usuarios %}
         <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
     <div class="card p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center"> <img style="border-radius: 50px;" src="{{ url_for('static', filename='fotos_perfil/{}'.format(usuario.foto_perfil)) }}" alt="Avatar" height="120" width="120"/></button> <span class="name mt-3">{{ usuario.username }}</span> <span class="idd">{{ usuario.email }}</span>
             {% if 'Não Informado' in usuario.cursos %}
-                <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="follow">Cursos</span> <span class="number1">0</span> </div>
+                <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="rating">Learnings</span> <span class="number1">0</span> </div>
             {% else %}
-                <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="follow">Cursos</span> <span class="number1">{{ usuario.cursos.count(';') + 1 }}</span> </div>
+                <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="rating">Learnings</span> <span class="number1">{{ usuario.cursos.count(';') + 1 }}</span> </div>
             {% endif %}
-
-            <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number3">0 <span class="follow">Posts</span></span> </div>
-        </div>
-            <div class="text mt-3"> <span><br><br> github.com/evillyf </span> </div>
-            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
-            <div class=" px-2 rounded mt-4 date "> <span class="join">Joined February,2022</span> </div>
+        <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="rating">Posts</span> <span class="number3">{{ usuario.contar_posts() }}</span> </div>
+            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class=""></i></span> <span><i class=""></i></span> <span><i class=""></i></span> <span><i class=""></i></span> </div>
         </div>
     </div>
 </div>

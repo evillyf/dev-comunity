@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
 * {
     margin: 0;
     padding: 0
@@ -280,4 +282,8 @@ small {
 
 .card-text{
 font-size: 15px !important;
+}
+
+.meupost {
+    background: #f2f5f8 !important;
 }

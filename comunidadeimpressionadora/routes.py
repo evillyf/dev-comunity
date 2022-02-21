@@ -37,14 +37,14 @@ def login():
         usuario = Usuario.query.filter_by(email=form_login.email.data).first()
         if usuario and bcrypt.check_password_hash(usuario.senha, form_login.senha.data):
             login_user(usuario, remember=form_login.lembrar_dados.data)
-            flash(f'Login feito com sucesso no e-mail: {form_login.email.data}', 'alert-success')
+            flash(f'Successfully login on email:  {form_login.email.data}', 'alert-success')
             parametro_next = request.args.get('next')
             if parametro_next:
                 return redirect(parametro_next)
             else:
                 return redirect(url_for('home'))
         else:
-            flash(f'Falha no login. E-mail ou senha incorretos.', 'alert-danger')
+            flash(f'Login Failed: Your e-mail or password is incorrect', 'alert-danger')
     return render_template('login.html', form_login=form_login)
 
 
@@ -60,8 +60,10 @@ def cadastro():
         database.session.add(usuario)
         #commit na sessão
         database.session.commit()
-        flash(f'Conta criada para o e-mail: {form_cadastro.email.data}', 'alert-success')
+        flash(f'Account created successfully on email: {form_cadastro.email.data}', 'alert-success')
+        usuario = Usuario.query.filter_by(email=form_cadastro.email.data).first()
         return redirect(url_for('home'))
+
 
     return render_template('cadastro.html', form_cadastro=form_cadastro)
 
@@ -70,7 +72,7 @@ def cadastro():
 @login_required
 def sair():
     logout_user()
-    flash(f'Logout feito com sucesso.', 'alert-success')
+    flash(f'You have successfully logged out.', 'alert-success')
     return redirect(url_for('home'))
 
 
@@ -90,7 +92,7 @@ def criar_post():
         post = Post(titulo=form.titulo.data, corpo=form.corpo.data, autor=current_user)
         database.session.add(post)
         database.session.commit()
-        flash('Post criado com sucesso', 'alert-success')
+        flash('Post successfully created!', 'alert-success')
         return redirect(url_for('home'))
     return render_template('criarpost.html', form=form)
 
@@ -129,7 +131,7 @@ def editar_perfil():
             current_user.foto_perfil = nome_imagem
         current_user.cursos = atualizar_cursos(form)
         database.session.commit()
-        flash(f'Perfil atualizado com sucesso!', 'alert-success')
+        flash(f'Profile successfully updated!', 'alert-success')
         return redirect(url_for('perfil'))
     elif request.method == 'GET':
         form.email.data = current_user.email
@@ -152,7 +154,7 @@ def exibir_post(post_id):
             post.titulo = form.titulo.data
             post.corpo = form.corpo.data
             database.session.commit()
-            flash('Post atualizado com sucesso!','alert-success')
+            flash('Post successfully updated!','alert-success')
             return redirect(url_for('home'))
     else:
         form = None
