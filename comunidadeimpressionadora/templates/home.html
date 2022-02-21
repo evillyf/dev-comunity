@@ -7,12 +7,12 @@
     @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 </style>
-        <div class="container mt-3 text-center">
+        <div class="container mt-3 text-sm-left">
             <h1 style="color: rgb(99, 39, 120); font-family: 'Gideon Roman'">DEV COMUNITY - OUR PLACE TO LEARN TOGETHER</h1>
             <h2>What do you want to share?</h2>
             <hr>
             {% for post in posts %}
-            <div class="row border mt-4 p-3 meupost">
+            <div style="word-wrap: break-word;" class="row border mt-4 p-3 meupost">
                 <div class="col col-3">
                     <div class="image pe-2"> <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}" class="rounded" width="100"> </div>
                     <strong>{{ post.autor.username }}</strong>
@@ -22,7 +22,7 @@
                             {% endfor %}
                     </div>
                 </div>
-                <div class="container col col-4">
+                <div class="row col col-11">
                     <a style="text-decoration: none" href="{{ url_for('exibir_post', post_id=post.id) }}"><h3>{{ post.titulo }}</h3></a>
                     <p>{{ post.corpo }}</p>
                 </div>
