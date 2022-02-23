@@ -16,9 +16,9 @@
                 </div>
                 <div class="container">
                     <h3>{{ post.titulo }}
-                    <small class="text-muted" style="font-size: 15px;"> - Data de Criação: {{ post.data_criacao.strftime('%d/%m/%Y') }}
+                    <small class="text-muted" style="font-size: 15px;"> - Date: {{ post.data_criacao.strftime('%d/%m/%Y') }}
                     {% if form%}
-                       - <a href="#form_editarpost">Editar Post</a> / <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#ExcluirPost">Excluir Post</a>
+                       - <a href="#form_editarpost">Edit Post</a> / <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#ExcluirPost">Delete Post</a>
                     {% endif %}
                     </small>
                     </h3>
@@ -37,7 +37,7 @@
         <div class="col">
                 <form method="POST" id="form_editarpost" action="" class="border p-5 m-3">
                     {{ form.csrf_token }}
-                <legend> EDITAR POST</legend>
+                <legend> EDIT POST</legend>
                     <fieldset>
                         <div class="form-group control-label pe-2">
                         {{ form.titulo.label(class="control-label") }}
@@ -87,7 +87,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Excluir Post</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
       </div>
       <div class="modal-body">
         Do you really want to delete the post? (This action cannot be undone.)
