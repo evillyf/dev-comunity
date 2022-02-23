@@ -15,7 +15,7 @@ database = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-login_manager.login_message = 'Faça login para prosseguir.'
+login_manager.login_message = 'Please login to continue.'
 login_manager.login_message_category = 'alert-info'
 
 from comunidadeimpressionadora import routes
