@@ -35,7 +35,7 @@ def login():
 
     if form_login.validate_on_submit() and 'botao_submit_login' in request.form:           #se tiver 2 form na mesma pagina: importa request e cod: if form_login.validate_on_submit() and 'botao_submit_login' in request.form:  #ver o nome do id do botao no inspecionar da pag
         usuario = Usuario.query.filter_by(email=form_login.email.data).first()
-        if usuario and bcrypt.check_password_hash(usuario.senha, form_login.senha.data):
+        if usuario and bcrypt.check_password_hash(usuario.senha.encode('utf-8'), form_login.senha.data):
             login_user(usuario, remember=form_login.lembrar_dados.data)
             flash(f'Successfully login on email:  {form_login.email.data}', 'alert-success')
             parametro_next = request.args.get('next')
@@ -54,7 +54,7 @@ def cadastro():
 
     if form_cadastro.validate_on_submit() and 'botao_submit_cadastro' in request.form:
         #criar conta
-        senha_crypt = bcrypt.generate_password_hash(form_cadastro.senha.data)
+        senha_cript = bcrypt.generate_password_hash(form_cadastro.senha.data).decode('utf-8')
         usuario = Usuario(username=form_cadastro.username.data, email=form_cadastro.email.data, senha=senha_crypt)
         #adicionar a sessão
         database.session.add(usuario)
