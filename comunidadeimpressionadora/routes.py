@@ -55,7 +55,7 @@ def cadastro():
     if form_cadastro.validate_on_submit() and 'botao_submit_cadastro' in request.form:
         #criar conta
         senha_cript = bcrypt.generate_password_hash(form_cadastro.senha.data).decode('utf-8')
-        usuario = Usuario(username=form_cadastro.username.data, email=form_cadastro.email.data, senha=senha_crypt)
+        usuario = Usuario(username=form_cadastro.username.data, email=form_cadastro.email.data, senha=senha_cript)
         #adicionar a sessão
         database.session.add(usuario)
         #commit na sessão
