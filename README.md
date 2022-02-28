@@ -1,5 +1,10 @@
-Site comunidade com o objetivo de trocar ideias sobre o universo dev - Flask 
+<h3 <h/3>
+
+
+Site comunidade com o objetivo de trocar ideias sobre o universo dev - Flask. 
 <br>
+<br>
+
 
 <blockquote>1. Tela de Cadastro:</blockquote>  
 
